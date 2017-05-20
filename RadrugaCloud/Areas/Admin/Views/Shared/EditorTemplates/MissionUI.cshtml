@@ -1,0 +1,121 @@
+﻿@model RadrugaCloud.Models.MissionUi
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(m=>m.MissionSetId)
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div id="divImageManager">
+    @Html.Partial("Controls/MissionImageEditor", Model)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Difficulty, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Difficulty, new { htmlAttributes = new { @class = "form-control", type = "range", min = 1, max = 10, step = 1 } })
+        @Html.ValidationMessageFor(model => model.Difficulty, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.AgeFrom, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.AgeFrom, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.AgeFrom, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.AgeTo, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.AgeTo, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.AgeTo, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.PersonQualitiesWithScores, new { @class = "control-label col-md-2" })
+    <div class="col-md-9">
+        @Ajax.ActionLink("Добавить качество", "SeederPersonQualitiesWithScore", "Mission", null, new AjaxOptions { UpdateTargetId = "divPersonQualitiesWithScores", InsertionMode = InsertionMode.InsertAfter, OnSuccess = "personQualityWithScoreEditor.updatePersonQuality" }, new { @class = "btn" })
+        <div id="divPersonQualitiesWithScores">
+            @if (Model.PersonQualitiesWithScores != null)
+            {
+                foreach (var personQualityWithScore in Model.PersonQualitiesWithScores)
+                {
+                    Html.RenderPartial("Controls/PersonQualitiesWithScoreEditor", personQualityWithScore, new ViewDataDictionary { { "PersonQualities", ViewBag.PersonQualities } });
+                }
+            }
+        </div>
+
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Hints, new { @class = "control-label col-md-2" })
+    <div class="col-md-9">
+        @Ajax.ActionLink("Добавить подсказку", "GetHintTemplate", "Mission", null, new AjaxOptions
+                                                                                       {
+                                                                                            InsertionMode = InsertionMode.InsertAfter,
+                                                                                            OnSuccess = "hintEditor.updateHints",
+                                                                                            UpdateTargetId = "divHints"
+                                                                                       }, new { @class = "btn" })
+        <div id="divHints">
+            @if (Model.Hints != null)
+            {
+                foreach (var hint in Model.Hints)
+                {
+                    Html.RenderPartial("Controls/HintEditor", hint);
+                }
+            }
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DependsOn, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Ajax.ActionLink("Добавить базовую миссию", "SeederBaseMissions", "Mission", new { currentMissionId = Model.Id }, new AjaxOptions
+                                                                                                                              {
+                                                                                                                                  UpdateTargetId = "divBaseMissions",
+                                                                                                                                  InsertionMode = InsertionMode.InsertAfter
+                                                                                                                              }, new { @class = "btn" })
+        <div id="divBaseMissions">
+            @if (Model.DependsOn != null && ViewBag.Missions != null)
+            {
+                foreach (var dependentMission in Model.DependsOn)
+                {
+                    Html.RenderPartial("Controls/BaseMissionsEditor", (Dictionary<string, string>)ViewBag.Missions, new ViewDataDictionary { { "SelectedMissionId", dependentMission } });
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.IsFinal, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.CheckBoxFor(model => model.IsFinal)
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.MessageAfterCompletion, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.MessageAfterCompletion, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.ExecutionType, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("ExecutionType", Model.ExecutionTypeList, new { @class = "form-control", id = "ExecutionTypeSelect", data_actionUrl = Url.Action("SwitchMissionType", "Mission") })
+    </div>
+</div>
+<div id="missionTypeDetails">
+    @Html.Partial("MissionTypes/_rightAnswer", Model)
+</div>
+

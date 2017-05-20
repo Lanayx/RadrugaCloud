@@ -1,0 +1,96 @@
+﻿@model RadrugaCloud.Models.MissionDraftUi
+@{
+    ViewBag.Title = "Создание миссии";
+}
+<h2>Миссия</h2>
+
+@using (Html.BeginForm("Create", "MissionDraft", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="width: 40%; display: inline-block" id="mission-rules">Создание</h4>
+        <a style="float: right; color: darkred" class="btn btn-default" href="#mission-rules" data-toggle="modal">Важно: Правила создания Миссии!</a>
+        <hr />
+        @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Название*", new { @class = "helpDescription control-label col-md-2", title = "Уникальное название миссии" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, "Описание*", new { @class = "helpDescription control-label col-md-2", title = "Описание миссии - таким его увидит игрок" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="divImageManager">
+            @Html.Partial("Controls/MissionImageEditor", Model)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgeFrom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgeFrom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AgeFrom, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgeTo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AgeTo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AgeTo, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Difficulty, "Сложность", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Difficulty, new { htmlAttributes = new { @class = "form-control", type = "range", min = 1, max = 10, step = 1, Value = 1 } })
+                @Html.ValidationMessageFor(model => model.Difficulty, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CorrectAnswers, "Правильные ответы(через точку с запятой)", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CorrectAnswers, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CorrectAnswers, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PersonQualitiesWithScores, new { @class = "helpDescription control-label col-md-2", title = "Выберите подходящие качества, которые развивает эта миссия." })
+            <div class="col-md-10">
+                @Ajax.ActionLink("Добавить качество", "PersonQualitiesEditor", null,
+                    new AjaxOptions { UpdateTargetId = "divPersonQualities", InsertionMode = InsertionMode.InsertAfter }, new { @class = "btn" })
+                <div id="divPersonQualities"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Author, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
+@{ Html.RenderPartial("Controls/MissionRules", "mission-rules"); }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/editMission")
+}

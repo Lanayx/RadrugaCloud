@@ -1,0 +1,46 @@
+﻿@model RadrugaCloud.Areas.Admin.Models.QuestionOptionUI
+<div class="form-group group-border">
+    @Html.HiddenFor(model => model.Number)
+
+    <div class="col-md-11">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control js-optionText" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NextQuestionId, new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.NextQuestionId, new { htmlAttributes = new { @class = "form-control js-optionNextQuestionId" } })
+                @Html.ValidationMessageFor(model => model.NextQuestionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PersonQualitiesWithScores, new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Ajax.ActionLink("Добавить качество", "PersonQualitiesWithScoreEditor", "Question", null, new AjaxOptions
+                                                                                                               {
+                                                                                                                   UpdateTargetId = "divPersonQualitiesWithScores",
+                                                                                                                   InsertionMode = InsertionMode.InsertAfter,
+                                                                                                                   OnSuccess = "questionEditor.updatePersonQuality($($(this).attr('data-ajax-update')))"
+                                                                                                               }, new { @class = "btn" })
+                <div id="divPersonQualitiesWithScores">
+                    @if (Model != null && Model.PersonQualitiesWithScores != null && Model.PersonQualitiesWithScores.Any())
+                    {
+                        foreach (var personQualityWithScore in Model.PersonQualitiesWithScores)
+                        {
+                            Html.RenderPartial("Controls/PersonQualitiesWithScoreEditor", personQualityWithScore, new ViewDataDictionary { { "PersonQualities", ViewBag.PersonQualities } });
+                        }
+                    }
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    &nbsp;<span class="removeOption col-md-1">X</span>
+
+</div>

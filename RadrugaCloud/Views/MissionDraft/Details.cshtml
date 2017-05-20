@@ -1,0 +1,97 @@
+﻿@using Core.Constants
+@using Core.DomainModels
+@using Core.Tools
+@model Core.DomainModels.MissionDraft
+@{
+    ViewBag.Title = "Детали предложения миссии";
+}
+<h2>Предложение миссии</h2>
+<div>
+    <h4>Детали</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhotoUrl)
+        </dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeFrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeTo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrectAnswers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CorrectAnswers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonQualities)
+        </dt>
+        <dd>
+            @Html.Encode(Model.PersonQualities.Select(pt =>
+                     ((IEnumerable<PersonQuality>)ViewBag.PersonQualities).First(pq => pq.Id == pt.PersonQualityId).Name).JoinToString())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+        <dd>
+            @TimeZoneInfo.ConvertTimeFromUtc(Model.AddDate, TimeZoneInfo.FindSystemTimeZoneById(DisplayConstants.BelarusTimeZoneId))
+        </dd>
+    </dl>
+</div>
+<p>
+    @if ("Admin".Equals(ViewContext.RouteData.DataTokens["area"]))
+    {
+        /*Removed. For now only manual convertion*/
+        <div @*class="form-actions no-color"*@ style="display: none">
+
+            @using (Html.BeginForm("CreateMissionFromDraft", "MissionDraft"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                <input type="submit" value="Создать миссию из черновика" class="btn btn-default" />
+            }
+        </div>
+
+
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+        <span> | </span>
+    }
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

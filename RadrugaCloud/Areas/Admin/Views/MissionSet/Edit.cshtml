@@ -1,0 +1,29 @@
+﻿@model RadrugaCloud.Areas.Admin.Models.MissionSetUI
+@{
+    ViewBag.Title = "Редактирование сета";
+}
+<h2>Сет миссий</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Редактирование</h4>
+        <hr />
+        @Html.HiddenFor(model => model.Id)
+        @Html.EditorForModel()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    <script src="~/Scripts/Custom/BaseMissionEditor.js"></script>
+}

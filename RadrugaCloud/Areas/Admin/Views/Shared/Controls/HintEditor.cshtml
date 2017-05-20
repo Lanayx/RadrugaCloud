@@ -1,0 +1,12 @@
+﻿@model Core.DomainModels.Hint
+
+<div class="form-inline">
+    
+    @Html.Hidden("HintId", Model != null ? Model.Id : "", new { @class = "js-HintId" }) @*HiddenFor causes value bug*@
+    @Html.EnumDropDownListFor(model => model.Type, new { @class = "js-HintType" })
+    &nbsp; @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control js-HintText" } })
+    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })   
+    &nbsp; @Html.EditorFor(model => model.Score, new { htmlAttributes = new { @class = "form-control js-HintScore", type = "range", min = 0, max = 5, step = 1 } })
+    <label></label>
+    <span class="removeHint">X</span>
+</div>

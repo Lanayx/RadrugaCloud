@@ -1,0 +1,16 @@
+﻿@model RadrugaCloud.Models.MissionUi
+@{
+    string actionLink = Url.Action("UploadImage", "Shared", new { area = "" });
+}
+<style type="text/css">
+</style>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.PhotoUrl, "Изображение*", new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        <input name="image" type="file" accept="image/*" class="form-control draftImageInput" data-actionUrl="@actionLink">
+        @Html.HiddenFor(model => model.PhotoUrl, new { @class = "imageUrlHidden" })
+        <img style="max-width: 120px" src="@Model.PhotoUrl" class="imageContent" />
+        @Html.ValidationMessageFor(model => model.PhotoUrl, string.Empty, new { @class = "text-danger imageUrlValidator" })
+    </div>
+</div>

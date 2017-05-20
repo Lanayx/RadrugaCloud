@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infrastructure</RootNamespace>
+    <AssemblyName>Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Linq2Rest, Version=4.1.0.0, Culture=neutral, PublicKeyToken=73a6c4cf8c87a30e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Linq2Rest.4.1.0.0\lib\Net451\Linq2Rest.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.3.1, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.3.1\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.NotificationHubs, Version=2.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.NotificationHubs.1.0.5\lib\net45-full\Microsoft.Azure.NotificationHubs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.7.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.1\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.7.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid, Version=6.3.4.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.6.3.4\lib\SendGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGrid.SmtpApi, Version=1.3.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.3.4.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.6.3.4\lib\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.1.603\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authorization\AuthorizationProvider.cs" />
+    <Compile Include="AzureTablesObjects\AzureBlobManager.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\FixLightQuality.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\UpdateKindActionsCount.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\UpdateUserLocations.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\CommonPlaceAliasAzure.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\CleanTempImagesStorage.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\FillTablesWithTestData.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\FixExternalImages.cs" />
+    <Compile Include="AzureTablesObjects\Enums\BlobKind.cs" />
+    <Compile Include="AzureTablesObjects\Miscellaneous\AzureTableConstants.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\DeveloperOperation.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\DeveloperStorageManager.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\DeveloperHelper.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\IDeveloperOperation.cs" />
+    <Compile Include="AzureTablesObjects\DeveloperTools\Operations\DeleteAllTables.cs" />
+    <Compile Include="AzureTablesObjects\Miscellaneous\BlobInfo.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\AppCountersAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\CommonPlaceAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\HintRequestAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\KindActionAzure.cs" />
+    <Compile Include="AzureTablesObjects\Miscellaneous\GeoCoordinateConverter.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\AppErrorInfoAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\MissionSetAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\MissionRequestAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\MissionAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\QuestionAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\UserAzure.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\UserData.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\UserIdentityAzure.cs" />
+    <Compile Include="AzureTablesObjects\Enums\AzureTableName.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\PersonQualityAzure.cs" />
+    <Compile Include="ErrorHandling\Elmah\ElmahExceptionLogger.cs" />
+    <Compile Include="InfrastructureTools\Azure\ImageProvider.cs" />
+    <Compile Include="InfrastructureTools\Azure\NotificationHubProvider.cs" />
+    <Compile Include="InfrastructureTools\Google\LocationProvider.cs" />
+    <Compile Include="InfrastructureTools\MemberNameResolver.cs" />
+    <Compile Include="InfrastructureTools\MemoryQueryExtensions.cs" />
+    <Compile Include="InfrastructureTools\Stub\ImageProvider.cs" />
+    <Compile Include="InfrastructureTools\ODataExtensions.cs" />
+    <Compile Include="InfrastructureTools\Sendgrid\MailProvider.cs" />
+    <Compile Include="InfrastructureTools\StatusCodeExtentions.cs" />
+    <Compile Include="AzureTablesObjects\Miscellaneous\AzureTableExtensions.cs" />
+    <Compile Include="AzureTablesObjects\Miscellaneous\Converters.cs" />
+    <Compile Include="AzureTablesObjects\TableEntities\MissionDraftAzure.cs" />
+    <Compile Include="InfrastructureTools\Stub\MailProvider.cs" />
+    <Compile Include="InfrastructureTools\Stub\NotificationProvider.cs" />
+    <Compile Include="Repositories\AzureTables\AppCountersRepository.cs" />
+    <Compile Include="Repositories\AzureTables\HintRequestRepository.cs" />
+    <Compile Include="Repositories\AzureTables\KindActionsRepository.cs" />
+    <Compile Include="Repositories\AzureTables\AppErrorInfoRepository.cs" />
+    <Compile Include="Repositories\AzureTables\CommonPlacesRepository.cs" />
+    <Compile Include="Repositories\AzureTables\MissionSetRepository.cs" />
+    <Compile Include="Repositories\AzureTables\MissionRequestRepository.cs" />
+    <Compile Include="Repositories\AzureTables\MissionRepository.cs" />
+    <Compile Include="Repositories\AzureTables\PersonTypeRepository.cs" />
+    <Compile Include="Repositories\AzureTables\QuestionRepository.cs" />
+    <Compile Include="Repositories\AzureTables\UserDataRepository.cs" />
+    <Compile Include="Repositories\AzureTables\UserIdentityRepository.cs" />
+    <Compile Include="Repositories\AzureTables\UserRepository.cs" />
+    <Compile Include="Repositories\Memory\AppCountersRepository.cs" />
+    <Compile Include="Repositories\Memory\CommonPlacesRepository.cs" />
+    <Compile Include="Repositories\Memory\HintRequestRepository.cs" />
+    <Compile Include="Repositories\Memory\KindActionRepository.cs" />
+    <Compile Include="Repositories\Memory\MissionSetRepository.cs" />
+    <Compile Include="Repositories\Memory\PersonQualityRepository.cs" />
+    <Compile Include="Repositories\Memory\AppErrorInfoRepository.cs" />
+    <Compile Include="Repositories\Memory\QuestionRepository.cs" />
+    <Compile Include="Repositories\Memory\RatingRepository.cs" />
+    <Compile Include="Repositories\Memory\UserIdentityRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AzureTables\MissionDraftRepository.cs" />
+    <Compile Include="AzureTablesObjects\AzureTableStorageManager.cs" />
+    <Compile Include="Repositories\Memory\MissionDraftRepository.cs" />
+    <Compile Include="Repositories\Memory\MissionRequestRepository.cs" />
+    <Compile Include="Repositories\Memory\MissionRepository.cs" />
+    <Compile Include="Repositories\Memory\UserRepository.cs" />
+    <Compile Include="Repositories\Redis\RatingRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{AB7D799E-79BD-4607-A351-A2004345389A}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,71 @@
+﻿@model Core.DomainModels.MissionRequest
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Details</h2>
+<div>
+    <h4>MissionRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mission.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mission.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.AvatarUrl)
+        </dt>
+        <dd>
+            <img src="@Model.User.AvatarUrl" alt="avatar" style="max-height: 300px; display: block" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.NickName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.NickName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proof)
+        </dt>
+        <dd>
+            @if (Model.Proof != null)
+            {
+                if (Model.Proof.ImageUrls != null)
+                {
+                    foreach (var photoUrl in Model.Proof.ImageUrls)
+                    {
+                        <img src="@photoUrl" alt="uploaded photo" style="max-height: 300px; display: block" />
+                    }
+                }
+                if (!String.IsNullOrEmpty(Model.Proof.CreatedText))
+                {
+                    <div>@Html.Encode(Model.Proof.CreatedText)</div>
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div @*class="form-actions no-color"*@>
+    @using (Html.BeginForm("Approve", "MissionRequest"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <input type="submit" value="Потдвердить" class="btn btn-default" />
+
+        @Html.LabelFor(model => model.StarsCount);
+        @:1 @Html.RadioButtonFor(model => model.StarsCount, "1")
+        @:2 @Html.RadioButtonFor(model => model.StarsCount, "2")
+        @:3 @Html.RadioButtonFor(model => model.StarsCount, "3")
+    }
+    @using (Html.BeginForm("Decline", "MissionRequest"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <input type="submit" name="id" value="Отклонить" class="btn btn-default" />
+        <input type="text" name="reason" placeholder="Причина" style="margin: 7px 0 0 20px;position: absolute;" />
+    }
+</div>
+<p>
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

@@ -1,0 +1,8 @@
+﻿@model Dictionary<string, string>
+
+@{ var selectedMissionId= (string)ViewData["SelectedMissionId"] ?? ""; }
+
+<div>
+    @Html.DropDownList("DependsOn", Model.Select(m => new SelectListItem { Selected = (m.Key == selectedMissionId), Text = m.Value, Value = m.Key }), "--выберите миссию--")
+    <span class="removeBaseMission">&nbsp;X</span>
+</div>

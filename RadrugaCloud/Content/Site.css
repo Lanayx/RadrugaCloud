@@ -1,0 +1,79 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+}
+
+.checkbox > input[type=checkbox]{
+    margin-left: 0;
+}
+
+.ErrorMessage
+{
+    color: red;
+    margin: 0 0 10px 10px;
+    font-size: 1.2em;
+}
+
+.SuccessMessage
+{
+    font-weight: bold;
+    color: green;
+    margin: 0 0 10px 10px;
+    font-size: 1.2em;
+}
+
+.group-border {
+    border:1px solid #CCC;
+    -ms-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.removePersonQuality, .removeBaseMission, .removeCalculationParameter, .removeOption, .removeHint {
+    color: red;
+    cursor: pointer;
+}
+
+.removePersonQuality, .removeBaseMission, .removeCalculationParameter, .removeHint {
+    margin-left: 15px;
+}
+
+.helpDescription {
+    cursor: help;
+}
+
+.numerator {
+    font-style: italic;
+}
+
+/*Fake classes*/
+.featured { width: auto}
+.content-wrapper { width: auto}
+.main-content { width: auto}
+.clear-fix { width: auto}
+.enum-name { width: auto}
+.enum-value { width: auto}
+.enum-description { width: auto}
+.float-left { width: auto}
+.draftImageInput { width: auto}
+.imageUrlHidden { width: auto}
+.imageContent { width: auto}
+.imageUrlValidator { width: auto}
+.secondary { width: auto}

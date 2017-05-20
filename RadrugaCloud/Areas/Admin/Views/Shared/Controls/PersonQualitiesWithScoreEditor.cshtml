@@ -1,0 +1,13 @@
+﻿@using Core.DomainModels
+@model PersonQualityIdWithScore
+
+@{
+    var personQualities = (IEnumerable<PersonQuality>) ViewData["PersonQualities"];
+}
+   
+<div class="form-inline">
+    @Html.DropDownListFor(model=>model.PersonQualityId, personQualities.Select(m => new SelectListItem { Text = m.Name, Value = m.Id }), "--выберите качество--")
+    &nbsp; @Html.EditorFor(model => model.Score, new { htmlAttributes = new { @class = "form-control", type = "range", min = -5, max = 5, step = 1 } })
+    <label></label>
+    <span class="removePersonQuality">X</span>
+</div>

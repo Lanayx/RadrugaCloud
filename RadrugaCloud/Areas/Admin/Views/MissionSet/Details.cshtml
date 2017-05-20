@@ -1,0 +1,48 @@
+﻿@using Core.DomainModels
+@using Core.Tools
+@model Core.DomainModels.MissionSet
+@{
+    ViewBag.Title = "Детали миссии";
+}
+<h2>Миссия</h2>
+<div>
+    <h4>Детали</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        
+       <dt>
+            @Html.DisplayNameFor(model => model.AgeFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeFrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeTo)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonQualities)
+        </dt>
+        <dd>
+            @Html.Encode(Model.PersonQualities.Select(pt =>
+                     ((IEnumerable<PersonQuality>)ViewBag.PersonQualities).First(pq => pq.Id == pt.PersonQualityId).Name).JoinToString())
+        </dd>
+    </dl>
+</div>
+<p>
+    @if ("Admin".Equals(ViewContext.RouteData.DataTokens["area"]))
+    {
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+        <span> | </span>
+    }
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

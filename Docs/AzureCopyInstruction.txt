@@ -1,0 +1,30 @@
+Инструкция для копирования в локальное хранилище
+
+1. Скачать http://aka.ms/downloadazcopypr
+2. После установки (копируем в F:\Temp\RadMissions)
+
+C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy>AzCopy /Source:https://defor.table.core.windows.net/Missions/ /Dest:F:\Temp\RadMissions /SourceKey:1PE1aG7+GC2H0oRqxKoIx7D2cBSAy8o7GJ5DMQkPH7Emb2qOFCBc+aFo3LexrTNDnMoqImazVUtUWPzS7AOeCQ==
+
+3. После копирования (манифест F:\Temp\RadMissions\defor_Missions_20150627T193047.1573106Z.manifest)
+
+C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy>AzCopy /Source:F:\Temp\RadMissions /Dest:http://127.0.0.1:10002/devstoreaccount1/Missions /Manifest:"defor_Missions_20150627T193047.1573106Z.manifest" /EntityOperation:InsertOrReplace /destType:table /destKey:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
+4. И так для каждой таблицы
+
+cd "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy"
+
+AzCopy /Source:https://defor.table.core.windows.net/Missions/ /Dest:D:\Temp\RadMissions /SourceKey:1PE1aG7+GC2H0oRqxKoIx7D2cBSAy8o7GJ5DMQkPH7Emb2qOFCBc+aFo3LexrTNDnMoqImazVUtUWPzS7AOeCQ==
+
+AzCopy /Source:d:\Temp\RadMissions /Dest:http://127.0.0.1:10002/devstoreaccount1/Missions /Manifest:"WWWWWWWWWWWWWWWWW" /EntityOperation:InsertOrReplace /destType:table /destKey:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
+AzCopy /Source:https://defor.table.core.windows.net/MissionSets/ /Dest:D:\Temp\RadMissions /SourceKey:1PE1aG7+GC2H0oRqxKoIx7D2cBSAy8o7GJ5DMQkPH7Emb2qOFCBc+aFo3LexrTNDnMoqImazVUtUWPzS7AOeCQ==
+
+AzCopy /Source:d:\Temp\RadMissions /Dest:http://127.0.0.1:10002/devstoreaccount1/MissionSets /Manifest:"WWWWWWWWWWWWWWWWW" /EntityOperation:InsertOrReplace /destType:table /destKey:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
+AzCopy /Source:https://defor.table.core.windows.net/PersonQualities/ /Dest:D:\Temp\RadMissions /SourceKey:1PE1aG7+GC2H0oRqxKoIx7D2cBSAy8o7GJ5DMQkPH7Emb2qOFCBc+aFo3LexrTNDnMoqImazVUtUWPzS7AOeCQ==
+
+AzCopy /Source:d:\Temp\RadMissions /Dest:http://127.0.0.1:10002/devstoreaccount1/PersonQualities /Manifest:"WWWWWWWWWWWWWWWWW" /EntityOperation:InsertOrReplace /destType:table /destKey:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
+AzCopy /Source:https://defor.table.core.windows.net/Questions/ /Dest:D:\Temp\RadMissions /SourceKey:1PE1aG7+GC2H0oRqxKoIx7D2cBSAy8o7GJ5DMQkPH7Emb2qOFCBc+aFo3LexrTNDnMoqImazVUtUWPzS7AOeCQ==
+
+AzCopy /Source:d:\Temp\RadMissions /Dest:http://127.0.0.1:10002/devstoreaccount1/Questions /Manifest:"WWWWWWWWWWWWWWWWW" /EntityOperation:InsertOrReplace /destType:table /destKey:Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==

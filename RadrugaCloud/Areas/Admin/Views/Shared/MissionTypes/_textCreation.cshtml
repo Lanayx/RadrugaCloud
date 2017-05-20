@@ -1,0 +1,9 @@
+﻿@model RadrugaCloud.Models.MissionUi
+
+<div class="form-group">
+    @Html.LabelFor(model => model.MinCharsCount, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.MinCharsCount, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.MinCharsCount, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>

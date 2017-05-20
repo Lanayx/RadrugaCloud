@@ -1,0 +1,16 @@
+﻿@model List<GroupedSelectListItem>
+
+    @{
+        var selectedAlias = (string)ViewData["SelectedAlias"];
+        if (Model != null)
+        {
+            Model.ForEach(c =>
+                { c.Selected = c.Value == selectedAlias; });
+        }
+    }
+
+    <div>
+        <span class="numerator"></span>
+        @Html.DropDownGroupList("CalculationFunctionParameters", Model, "--выберите параметр--")
+        <span class="removeCalculationParameter">&nbsp;X</span>
+    </div>

@@ -1,0 +1,29 @@
+﻿@model RadrugaCloud.Areas.Admin.Models.MissionSetUI
+@{
+    ViewBag.Title = "Создание сета";
+}
+<h2>Миссия</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Создание</h4>
+        <hr />
+        @Html.EditorForModel()
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Создать" class="btn btn-default" />
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    <script src="~/Scripts/Custom/BaseMissionEditor.js"></script>
+}

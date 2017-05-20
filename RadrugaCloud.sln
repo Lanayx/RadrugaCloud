@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadrugaCloud", "RadrugaCloud\RadrugaCloud.csproj", "{D815A2FB-182B-4495-BA04-B3D8A634846A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadrugaCloud.Tests", "RadrugaCloud.Tests\RadrugaCloud.Tests.csproj", "{B0FB073F-4975-4AD1-AF23-91B06AFF3458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{AB7D799E-79BD-4607-A351-A2004345389A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{FCC057AD-EE40-48EC-B593-957312352A8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyScheduler", "Scheduler\DailyScheduler.csproj", "{CA32E28F-383A-4263-8E54-35BAAA787AF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D815A2FB-182B-4495-BA04-B3D8A634846A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D815A2FB-182B-4495-BA04-B3D8A634846A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D815A2FB-182B-4495-BA04-B3D8A634846A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D815A2FB-182B-4495-BA04-B3D8A634846A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FB073F-4975-4AD1-AF23-91B06AFF3458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FB073F-4975-4AD1-AF23-91B06AFF3458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FB073F-4975-4AD1-AF23-91B06AFF3458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FB073F-4975-4AD1-AF23-91B06AFF3458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7D799E-79BD-4607-A351-A2004345389A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7D799E-79BD-4607-A351-A2004345389A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7D799E-79BD-4607-A351-A2004345389A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7D799E-79BD-4607-A351-A2004345389A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC057AD-EE40-48EC-B593-957312352A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC057AD-EE40-48EC-B593-957312352A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC057AD-EE40-48EC-B593-957312352A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC057AD-EE40-48EC-B593-957312352A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C23D2B-58ED-4F34-A0D0-47A54104DA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA32E28F-383A-4263-8E54-35BAAA787AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA32E28F-383A-4263-8E54-35BAAA787AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA32E28F-383A-4263-8E54-35BAAA787AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA32E28F-383A-4263-8E54-35BAAA787AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

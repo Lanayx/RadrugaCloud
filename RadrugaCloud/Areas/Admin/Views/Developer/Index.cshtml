@@ -1,0 +1,46 @@
+﻿@model RadrugaCloud.Models.DeveloperOperationsModel
+
+@{
+    ViewBag.Title = "Developer Mode";
+}
+@{ var resultClass = Model.IsError ? "ErrorMessage" : "SuccessMessage"; }
+<div class="@resultClass">@Html.Raw(Model.Result)</div>
+@using (Html.BeginForm())
+{
+ @*    <div>
+        <input type="submit" value="Execute" name="action:Fake" />
+        @Html.Label("Fake")
+    </div>*@
+    <div>
+         <input type="submit" value="Execute" name="action:DeleteAllTables" />
+         @Html.Label("Delete all tables (recreation is automatic) - EMULATOR ONLY!!")
+     </div>
+    <div>
+        <input type="submit" value="Execute" name="action:FillTablesWithTestData" />
+        @Html.Label("Fill tables with test data - EMULATOR ONLY!!")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:FixExternalImages" />
+        @Html.Label("Fix external images URLs to point our storage")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:CleanTempImagesStorage"/>
+        @Html.Label("Clean temp image storage (currently " + Model.TempImagesCount + " items)")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:UpdateUserLocations"/>
+        @Html.Label("Update User Locations to the new model")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:UpdateKindActionsCount" />
+        @Html.Label("Update users' Kind actions count")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:FixLightQuality" />
+        @Html.Label("Update users' light qualities")
+    </div>
+    <div>
+        <input type="submit" value="Execute" name="action:UpdateRadrugaColor" />
+        @Html.Label("Update users' colors")
+    </div>
+}

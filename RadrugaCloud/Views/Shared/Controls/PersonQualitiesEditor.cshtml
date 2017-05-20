@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Core.DomainModels.PersonQuality>
+
+@{ var selectedTypeId= (string)ViewData["SelectedTypeId"] ?? ""; }
+
+<div>
+    @Html.DropDownList("PersonQualityIds", Model.Select(m => new SelectListItem {Selected = (m.Id == selectedTypeId), Text = m.Name, Value = m.Id }), "--выберите качество--")
+    <span class="removePersonQuality">&nbsp;X</span>
+</div>

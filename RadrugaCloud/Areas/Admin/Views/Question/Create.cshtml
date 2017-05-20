@@ -1,0 +1,68 @@
+﻿@model RadrugaCloud.Areas.Admin.Models.QuestionUi
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Question</h4>
+        <hr />
+      
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+           
+            @Html.LabelFor(model => model.QuestionOptions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Ajax.ActionLink("Add another item", "OptionsEditor",null, new AjaxOptions
+                                                                                {
+                                                                                    UpdateTargetId = "divOptions",
+                                                                                    InsertionMode = InsertionMode.InsertAfter,
+                                                                                    OnSuccess = "questionEditor.updateOption()"
+                                                                                },new {@class= "btn", id="btnAddOption"})
+                <div id="divOptions">
+                    @*@foreach (var questionOption in Model.QuestionOptions)
+                    {
+                        Html.RenderPartial("Controls/OptionsEditor", questionOption);
+                    }*@
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    <script src="~/Scripts/Custom/QuestionEditor.js"></script>
+}

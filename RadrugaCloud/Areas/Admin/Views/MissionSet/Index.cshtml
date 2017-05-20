@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Core.DomainModels.MissionSet>
+@{
+    ViewBag.Title = "Список сетов";
+}
+<h2>Список миссий</h2>
+
+<p>
+    @Html.ActionLink("Создать сет", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeTo)
+        </th>
+        <th>
+            @Html.Display("Количество миссий")
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeTo)
+            </td>
+            <td>
+
+                @Html.Display(string.Format("{0}", item.Missions != null ? item.Missions.Count() : 0))
+            </td>
+            <td>
+                @Html.ActionLink("Детали", "Details", new { id = item.Id })
+
+                @if ("Admin".Equals(ViewContext.RouteData.DataTokens["area"]))
+                {
+                    <span> | </span>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id })
+                    <span> | </span>
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+</table>
+@if (ViewBag.ShowPrevious)
+{
+    @Html.ActionLink("<- Сюда", "Index", new { page = ViewBag.CurrentPage - 1 })
+}
+@if (ViewBag.ShowNext)
+{
+    @Html.ActionLink("Туда ->", "Index", new { page = ViewBag.CurrentPage + 1 })
+}
